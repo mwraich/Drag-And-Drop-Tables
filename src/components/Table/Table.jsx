@@ -1,15 +1,15 @@
 import './Table.css';
-
+import { getFullName } from '../../helpers/users';
 const Table = ({ users }) => {
 	const UserRows = ({ users }) => {
 		const userRows = [];
 		users.map((user) => {
 			userRows.push(
-				<tr>
+				<tr key={user.id}>
 					<td>{user.id}</td>
 					<td>{user.firstName}</td>
 					<td>{user.lastName}</td>
-					<td>FULL NAME</td>
+					<td>{getFullName(user)}</td>
 					<td>{user.email}</td>
 					<td>{user.city}</td>
 					<td>{user.registeredDate}</td>
