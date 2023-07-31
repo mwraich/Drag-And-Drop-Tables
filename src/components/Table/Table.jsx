@@ -1,22 +1,22 @@
 import './Table.css';
 
-const Table = () => {
-	const UserRows = () => {
+const Table = ({ users }) => {
+	const UserRows = ({ users }) => {
 		const userRows = [];
-		for (let i = 0; i < 100; i++) {
+		users.map((user) => {
 			userRows.push(
 				<tr>
-					<td>1</td>
-					<td>John</td>
-					<td>Doe</td>
-					<td>John Doe</td>
-					<td>johndoe@example.com</td>
-					<td>New York</td>
-					<td>2022-10-22</td>
-					<td>100</td>
+					<td>{user.id}</td>
+					<td>{user.firstName}</td>
+					<td>{user.lastName}</td>
+					<td>FULL NAME</td>
+					<td>{user.email}</td>
+					<td>{user.city}</td>
+					<td>{user.registeredDate}</td>
+					<td>DSR</td>
 				</tr>
 			);
-		}
+		});
 		return userRows;
 	};
 	return (
@@ -34,7 +34,7 @@ const Table = () => {
 				</tr>
 			</thead>
 			<tbody>
-				<UserRows />
+				<UserRows users={users} />
 			</tbody>
 		</table>
 	);
