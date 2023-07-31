@@ -1,5 +1,5 @@
 import './Table.css';
-import { getFullName } from '../../helpers/users';
+import { getFullName, getDaysSinceRegistered } from '../../helpers/users';
 const Table = ({ users }) => {
 	const UserRows = ({ users }) => {
 		const userRows = [];
@@ -13,7 +13,7 @@ const Table = ({ users }) => {
 					<td>{user.email}</td>
 					<td>{user.city}</td>
 					<td>{user.registeredDate}</td>
-					<td>DSR</td>
+					<td>{getDaysSinceRegistered(user)}</td>
 				</tr>
 			);
 		});
