@@ -17,7 +17,7 @@ const UsersTable = ({ users }) => {
 			},
 			{
 				Header: 'FullName',
-				accessor: (user) => {getFullName(user)},
+				accessor: (user) => getFullName(user),
 			},
 			{
 				Header: 'Last Name',
@@ -37,32 +37,14 @@ const UsersTable = ({ users }) => {
 			},
 			{
 				Header: 'DSR',
-				accessor: (user => {getDaysSinceRegistered(user)}),
+				accessor: (user) => getDaysSinceRegistered(user),
 			},
 		],
 		[],
 	);
-	const UserRows = ({ users }) => {
-		const userRows = [];
-		users.map((user) => {
-			userRows.push(
-				<tr key={user.id}>
-					<td>{user.id}</td>
-					<td>{user.firstName}</td>
-					<td>{user.lastName}</td>
-					<td>{getFullName(user)}</td>
-					<td>{user.email}</td>
-					<td>{user.city}</td>
-					<td>{user.registeredDate}</td>
-					<td>{getDaysSinceRegistered(user)}</td>
-				</tr>,
-			);
-		});
-		return userRows;
-	};
-
 	// Create an instance of the table
-	const { getTableProps, headerGroups } = useTable({ columns, data: users });
+	const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+		useTable({ columns, data: users });
 
 	return (
 		<table {...getTableProps()}>
@@ -75,8 +57,17 @@ const UsersTable = ({ users }) => {
 					</tr>
 				))}
 			</thead>
-			<tbody>
-				<UserRows users={users} />
+			<tbody {...getTableBodyProps()}>
+				{rows.map((row) => {
+					prepareRow(row);
+					return (
+						<tr {...row.getRowProps()}>
+							{row.cells.map((cell) => (
+								<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+							))}
+						</tr>
+					);
+				})}
 			</tbody>
 		</table>
 	);
