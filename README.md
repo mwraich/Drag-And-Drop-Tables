@@ -1,6 +1,39 @@
-# Getting Started with Create React App
+# React Draggable Columns Table
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A custom implementation of a table in React with sortable and draggable columns. The table utilizes React Table and React DnD for core functionalities.
+
+1. [Table Features](#table-features)
+2. [Implementation Details](#implementation-details)
+   - [Draggable Columns](#draggable-columns)
+   - [Sortable Columns](#sortable-columns)
+3. [Consideration for Pagination](#consideration-for-pagination)
+4. [Getting Started](#getting-started)
+
+## Table Features
+
+- **Draggable columns**: You can reorder columns by clicking and dragging.
+- **Sortable columns**: Clicking on a column header will sort the data in that column in ascending or descending order.
+
+## Implementation Details
+
+### Draggable Columns
+
+The draggable feature is achieved by using React DnD's `useDrag` and `useDrop` hooks. The drag source and drop target are implemented in the column header component.
+
+### Sortable Columns
+
+The sorting feature is powered by the `useSortBy` hook from React Table. Clicking on the column header will trigger a sort function on the corresponding column.
+
+## Consideration for Pagination
+
+React Table provides a `usePagination` hook which can be added to the table instance to split the data across multiple pages. The implementation would require adding controls for page navigation (next, previous, jump to page, etc.) and a method to handle page changes.
+
+## Getting Started
+
+1. Clone the repo: `git clone https://github.com/your-repo-url`
+2. Install dependencies: `npm install`
+3. Run the project: `npm start`
+4. Visit `http://localhost:3000` in your browser
 
 ## Available Scripts
 
@@ -38,33 +71,3 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -19,7 +19,7 @@ const UsersTable = ({ users }) => {
 				id: 'firstName',
 			},
 			{
-				Header: 'FullName',
+				Header: 'Full Name',
 				accessor: (user) => getFullName(user),
 				id: 'FullName',
 			},

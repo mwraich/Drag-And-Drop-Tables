@@ -1,3 +1,8 @@
+/* Opted to keep things simple css wise, so straight forward classes here
+but can switch to module.css as we extend and have more conflicting classes,
+thus the use of camelCase here
+*/
+
 table {
 	width: 80%;
 	margin: auto;
