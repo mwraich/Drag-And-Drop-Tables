@@ -1,0 +1,37 @@
+:root {
+	--dark-purple: #674263;
+	--light-purple: #856782;
+	--grey: #ddd;
+	--light-font: #333;
+	--black: #000;
+	--white: #fff;
+}
+
+body {
+	background: linear-gradient(
+		90deg,
+		rgba(9, 9, 121, 1) 0%,
+		rgba(247, 227, 248, 1) 0%,
+		rgba(146, 142, 207, 1) 0%,
+		rgba(103, 66, 99, 1) 100%
+	);
+}
+
+h1 {
+	font-size: 3rem;
+	color: var(--white);
+	text-transform: uppercase;
+	font-weight: 200;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+.icon {
+	height: 20px;
+	width: 20px;
+}
+
+.unsortedIcon {
+	height: 30px;
+	width: 30px;
+}

@@ -20,6 +20,7 @@ function App() {
 
 	return (
 		<div>
+      <h1>Drag Until You Drop Columns</h1>
 			<Table users={users} />
 		</div>
 	);

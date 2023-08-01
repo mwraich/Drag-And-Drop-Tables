@@ -1,5 +1,10 @@
+// Extracted this out so that UserTable was more readable, parts of may also be reused
+
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { ReactComponent as Unsorted } from '../../assets/icons/Unsorted.svg';
+import { ReactComponent as AscArrow } from '../..//assets/icons/AscArrow.svg';
+import { ReactComponent as DescArrow } from '../..//assets/icons/DescArrow.svg';
 
 // Can modify this later to change type so it's more re-usable
 const useDragAndDrop = (dragItem, dropHandler, collect) => {
@@ -53,11 +58,27 @@ const DraggableHeader = ({ column, columnOrder, setColumnOrder }) => {
 			{...column.getHeaderProps(column.getSortByToggleProps())}
 			style={{ opacity }}
 		>
-			<span>
-				{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
-			</span>
-			{column.render('Header')}
-			<button ref={dragRef}>X</button>
+			<div className="headerContents">
+				<button
+					aria-label="Drag to reorder"
+					className="dragButton"
+					ref={dragRef}
+				>
+					✋
+				</button>
+				<span className="sortIcon">
+					{column.isSorted ? (
+						column.isSortedDesc ? (
+							<DescArrow className="icon" aria-label="Sorted descending" />
+						) : (
+							<AscArrow className="icon" aria-label="Sorted ascending" />
+						)
+					) : (
+						<Unsorted className="unsortedIcon" aria-label="Not sorted" />
+					)}
+				</span>
+				{column.render('Header')}
+			</div>
 		</th>
 	);
 };
