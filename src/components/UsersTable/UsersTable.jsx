@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { useTable } from 'react-table';
+import { useSortBy, useTable } from 'react-table';
 import { getFullName, getDaysSinceRegistered } from '../../helpers/users';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -95,7 +95,14 @@ const UsersTable = ({ users }) => {
 		});
 
 		return (
-			<th ref={dropRef} {...column.getHeaderProps()} style={{ opacity }}>
+			<th
+				ref={dropRef}
+				{...column.getHeaderProps(column.getSortByToggleProps())}
+				style={{ opacity }}
+			>
+				<span>
+					{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
+				</span>
 				{column.render('Header')}
 				<button ref={drag}>X</button>
 			</th>
@@ -103,7 +110,7 @@ const UsersTable = ({ users }) => {
 	};
 	// Create an instance of the table
 	const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-		useTable({ columns: orderedColumns, data: users });
+		useTable({ columns: orderedColumns, data: users }, useSortBy);
 
 	return (
 		<table {...getTableProps()}>
