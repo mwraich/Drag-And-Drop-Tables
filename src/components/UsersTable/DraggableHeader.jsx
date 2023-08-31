@@ -63,6 +63,9 @@ const DraggableHeader = ({ column, columnOrder, setColumnOrder }) => {
 					aria-label="Drag to reorder"
 					className="dragButton"
 					ref={dragRef}
+					onClick={(event) => {
+						event.stopPropagation();
+					}}
 				>
 					✋
 				</button>
