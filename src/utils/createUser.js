@@ -4,7 +4,7 @@ export function createUsers(num) {
 	const users = [];
 	for (let i = 0; i < num; i++) {
 		try {
-			users.push(new User());
+			users.push(User.initializeFakeUser());
 		} catch (error) {
 			console.log(error);
 		}
