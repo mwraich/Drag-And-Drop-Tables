@@ -2,7 +2,7 @@
 
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { ReactComponent as Unsorted } from '../../assets/icons/Unsorted.svg';
+import { ReactComponent as Draggable } from '../../assets/icons/Draggable.svg';
 import { ReactComponent as AscArrow } from '../..//assets/icons/AscArrow.svg';
 import { ReactComponent as DescArrow } from '../..//assets/icons/DescArrow.svg';
 
@@ -51,7 +51,17 @@ const DraggableHeader = ({ column, columnOrder, setColumnOrder }) => {
 	};
 
 	const [opacity, dragRef, dropRef] = useDragAndDrop(column, dropHandler);
-
+	const sortIcon = () => (
+		<span>
+			{column.isSorted ? (
+				column.isSortedDesc ? (
+					<DescArrow className="icon" aria-label="Sorted descending" />
+				) : (
+					<AscArrow className="icon" aria-label="Sorted ascending" />
+				)
+			) : null}
+		</span>
+	);
 	return (
 		<th
 			ref={dropRef}
@@ -67,20 +77,10 @@ const DraggableHeader = ({ column, columnOrder, setColumnOrder }) => {
 						event.stopPropagation();
 					}}
 				>
-					✋
+					<Draggable className="icon" aria-label="draggable" />
 				</button>
-				<span className="sortIcon">
-					{column.isSorted ? (
-						column.isSortedDesc ? (
-							<DescArrow className="icon" aria-label="Sorted descending" />
-						) : (
-							<AscArrow className="icon" aria-label="Sorted ascending" />
-						)
-					) : (
-						<Unsorted className="unsortedIcon" aria-label="Not sorted" />
-					)}
-				</span>
 				{column.render('Header')}
+				{sortIcon()}
 			</div>
 		</th>
 	);
